@@ -1,0 +1,117 @@
+<?php
+$base = "http://" . $_SERVER['SERVER_NAME'];
+$locale = $_SESSION['temp_creation']['locale'];
+
+switch ($locale) {
+    case 'en_US':
+        $enUs = true;
+        break;
+    case 'de_DE':
+        $deDE = true;
+        break;
+    case 'fr_FR':
+        $frFR = true;
+        break;
+    case 'gu_IN':
+        $guIn = true;
+        break;
+    default:
+        break;
+}
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en">
+    <head>
+        <meta charset="utf-8">            
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta name="description" content="">
+                    <meta name="author" content="">
+
+                        <!-- Le styles -->
+                        <script src="<?= $base ?>/bootstrap/js/jquery.min.js"></script>
+                        <link href="<?= $base ?>/bootstrap/css/bootstrap.css" rel="stylesheet" />
+                        <script src="<?= $base ?>/bootstrap/js/bootstrap.js"></script>   
+
+                        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+                        <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+                        <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+                        <script src="<?=$base?>/js/json.js"></script>
+                        <title> <?= $this->translate('project_title'); ?> </title>
+                        <style type="text/css">
+                            html{
+/*                                padding-top: 60px;
+                                background-color: lightgray;*/
+                            }
+                            body {
+                                padding-top: 60px;
+                                padding-bottom: 40px;
+                                width: 100%;                        
+                            }                           
+                        </style>
+                        <link href="<?= $base ?>/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+
+                            <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+                            <!--[if lt IE 9]>
+                              <script src="<?= $base ?>/bootstrap/js/html5shiv.js"></script>
+                            <![endif]-->
+
+                            <!-- Fav and touch icons -->    
+                            <!--<link rel="shortcut icon" href="../assets/ico/favicon.png">-->
+                            </head>
+
+    
+                            <body>
+
+                                <div class="navbar navbar-fixed-top  navbar-inverse">
+                                    <div class="navbar-inner">
+                                        <div class="container">
+                                            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                                                <span class="icon-bar"></span>
+                                                <span class="icon-bar"></span>
+                                                <span class="icon-bar"></span>
+                                            </button>
+                                            <a class="brand" href="<?= $this->url(array(), 'home'); ?>"><i class="icon-white icon-tasks"></i>  <?= $this->translate('project_title'); ?> </a>
+                                            <div class="nav-collapse collapse">                                            
+                                                <ul class="nav pull-right">
+                                                    <li><a href="<?= $this->url(array(), 'home'); ?>"><i class="icon-white icon-home"></i> <?= $this->translate('home'); ?></a></li>
+                                                    <li class="dropdown" key="adminsettings"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-white icon-globe"></i> <b class="caret"></b></a>
+                                                        <ul class="dropdown-menu">
+                                                            <li><a href="?locale=en_US"><img src="/image/locale/en_us.gif" /> en_US <?php
+                                                                    if ($enUs) {
+                                                                        echo "<i class='icon-ok-sign'></i> ";
+                                                                    }
+                                                                    ?></a></li>
+                                                            <li><a href="?locale=de_DE"><img src="/image/locale/de_de.gif" /> de_DE <?php
+                                                                    if ($deDE) {
+                                                                        echo "<i class='icon-ok-sign'></i> ";
+                                                                    }
+                                                                    ?></a></li>
+                                                            <li><a href="?locale=fr_FR"><img src="/image/locale/fr_fr.gif" /> fr_FR <?php
+                                                                    if ($frFR) {
+                                                                        echo "<i class='icon-ok-sign'></i> ";
+                                                                    }
+                                                                    ?></a></li>
+                                                            <li><a href="?locale=gu_IN">Gujarati <?php
+                                                                    if ($guIn) {
+                                                                        echo "<i class='icon-ok-sign'></i> ";
+                                                                    }
+                                                                    ?></a></li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </div><!--/.nav-collapse -->
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="container">
+                                    <?php echo $this->layout()->content ?>                           
+                                    <hr/>
+
+                                        <footer>
+                                            <p>&copy; SpearBall Inc. 2013</p>
+                                        </footer>
+
+                                </div> <!-- /container -->
+                            </body>
+                            </html>

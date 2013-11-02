@@ -1,0 +1,64 @@
+<div id="view-content">
+    <a href="#" id="fetchButton" class="btn btn-success"> Fetch Data By Ajax</a>
+    <a href="#" id="loadButton" class="btn btn-success"> Load Data</a>
+
+    <table id="catTable" class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Sr</th>
+                <th>Name</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>    
+</div>
+
+<script>
+    var limit = 3;
+    var fullList = '';
+    var lastId = 0;
+    $(document).ready(function() {
+        $("#loadButton").hide();
+        $("#fetchButton").click(function() {
+            $.ajax({
+                type: 'GET',
+                url: '<?= $this->url(array(), 'cat-get'); ?>',
+                success: function(response) {
+                    var d = eval("(" + response + ")");
+                    fullList = d;
+                    lastId = 0;                    
+                    $("#catTable tbody").empty();
+                    $("#loadButton").show();
+                }
+            });
+        });
+
+        $("#loadButton").click(function() {
+            addMoreRows();
+        });
+
+
+    });
+
+    function addMoreRows() {
+        var i = 0;
+        var newLimit = lastId + limit;
+        for (i = lastId; i < fullList.length && i < newLimit; i++) {
+            addRow(fullList[i].id, fullList[i].name);
+        }
+        lastId = i;
+    }
+
+    function addRow(id, name) {
+        $("#catTable tbody").append("<tr id='tr" + id + "'><td>" + id + "</td><td>" + name + "</td><td><a href='#' btn-value='" + id + "' class='btn btn-danger' onclick='deleteRow(" + id + ")'><i class='icon-white icon-trash'></i></a></td></tr>");
+    }
+
+    function deleteRow(id) {
+        alert("delete Id = " + id);
+        $("#catTable tr#tr" + id).remove();
+    }
+
+</script>
