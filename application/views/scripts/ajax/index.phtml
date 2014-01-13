@@ -25,7 +25,7 @@
         $("#fetchButton").click(function() {
             $.ajax({
                 type: 'GET',
-                url: '<?= $this->url(array(), 'cat-get'); ?>',
+                url: '<?php echo  $this->url(array(), 'cat-get'); ?>',
                 success: function(response) {
                     var d = eval("(" + response + ")");
                     fullList = d;

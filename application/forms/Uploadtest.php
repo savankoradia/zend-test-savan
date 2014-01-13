@@ -11,8 +11,8 @@ class Application_Form_Uploadtest extends Zend_Form {
                     'onsubmit'=>'observeProgress()'));
 
         $files = new Zend_Form_Element_File('files');
-        $files->setDestination('/var/www/zend-test/public/upload/image')
-                ->setMultiFile(3)
+        $files->setDestination('C:\wamp\www\allDownloads')
+                //->setMultiFile(1)
                 ->setValueDisabled(true);
         
         #submit

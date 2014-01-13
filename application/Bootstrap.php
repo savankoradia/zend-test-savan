@@ -10,7 +10,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
     }
 
     protected function _initLocale() {
-
+        $locale = null;
         $localeArray = array('en_US', 'de_DE', 'fr_FR', 'gu_IN');
         $session = new Zend_Session_Namespace('temp_creation');
         

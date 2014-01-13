@@ -150,10 +150,10 @@
         document.getElementById('pg-text-2').innerHTML = 'Upload done';
     }
 </script>
-Max upload file size = <?= $this->maxUploadFileSize ?><br>
-Max post size = <?= $this->postMaxSize ?>
+Max upload file size = <?php echo  $this->maxUploadFileSize ?><br>
+Max post size = <?php echo  $this->postMaxSize ?>
 
-<?= $this->form; ?><br>
+<?php echo  $this->form; ?><br>
 <iframe name="uploadTarget"></iframe>
 
 <div id="progressbar">
